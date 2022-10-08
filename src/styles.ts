@@ -2,7 +2,6 @@ import styled from 'styled-components';
 export const sizes = {
   mobileS: '320px',
   mobileM: '481px',
-  mobileMs: '481px',
   mobileL: '641px',
   tablet: '961px',
   laptop: '1025px',
@@ -12,12 +11,45 @@ export const sizes = {
 export const devices = {
   mobileS: `(min-width: ${sizes.mobileS})`,
   mobileM: `(min-width: ${sizes.mobileM})`,
-  mobileMs: `(min-width: ${sizes.mobileMs})`,
   mobileL: `(min-width: ${sizes.mobileL})`,
   tablet: `(min-width: ${sizes.tablet})`,
   laptop: `(min-width: ${sizes.laptop})`,
   desktop: `(min-width: ${sizes.desktop})`,
 };
+
+export const AppContainer = styled.div`
+
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex: 1 1 100%;
+  width: 100%;
+  height: 100vh;
+  background-color: #F4F6FC;
+
+`;
+export const Content = styled.div`
+  display: flex;
+  flex: 1 1 100%;
+  width: 100%;
+  height: 100%;
+  flex-flow: column nowrap;
+  flex-direction: column;
+
+`;
+export const Header = styled.header`
+
+
+`;
+
+export const Body = styled.body`
+  display: flex;
+  flex: 1 1 100%;
+  flex-flow: column;
+  background-color: #FFFFFE;
+  border-radius: 4px 0px 0px 0px;
+  margin: 0;
+
+`;
 
 export const ContentContainer = styled.div`
   height: 100%;
@@ -82,12 +114,6 @@ export const GraphContainer = styled.div`
   }
 
   @media ${devices.laptop} {
-    align-items: center;
-    align-content: flex-start;
-    justify-content: space-around;
-  }
-  
-  @media ${devices.laptop} {
     justify-content: space-between;
     align-items: flex-start;
     align-content: flex-start;
@@ -101,18 +127,18 @@ export const TableWrapper = styled.div`
 `;
 
 export const BarWrapper = styled.div`
-  width: 500px;
+ 
     
   @media ${devices.mobileS} {
     width: 300px;
   }
   @media ${devices.mobileL} {
     align-self: center;
-  }
-
-  @media ${devices.tablet} 
     width: 500px;
   }
+
+  width: 500px;
+  
 `;
 export const DoughnutWrapper = styled.div`
   width: 250px;

@@ -1,21 +1,48 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2'
 import { Chart, registerables } from 'chart.js';
+import { DataProp } from '../datatable/Datatable';
+import { Produto } from '../models';
 
-const BarChart: React.FunctionComponent = () => {
+
+interface ChartData {
+    id: number,
+    idPedido: number,
+    IdProduto: number,
+    pedido: string,
+    produto: Produto,
+}
+
+const BarChart: React.FunctionComponent<DataProp> = ({ data }) => {
     Chart.register(...registerables);
     // ChartsJs.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+    const [chartInfo, setChartInfo]: any = useState();
+    const [chartInfoLabel, setChartInfoLabel]: any = useState();
     const [chartData, setChartData]: any = useState({ datasets: [], })
-
     const [chartOptions, setChartOptions] = useState({});
+
+    const populateChart = (data: any) => {
+        let value: any = [];
+        let valueLabel: any = [];
+        data.forEach((element: ChartData) => {
+            value.push(element.produto.valor)
+            valueLabel.push(element.idPedido.toString())
+        });
+        setChartInfo(value);
+        setChartInfoLabel(valueLabel);
+    };
+
+    useEffect(() => {
+        if (data) populateChart(data);
+    }, [data]);
 
     useEffect(() => {
         setChartData({
-            labels: ["John", "Kevin", "George", "michael"],
+            labels: chartInfoLabel,
             datasets: [
                 {
-                    label: "Top 5 Pedidos por valor",
-                    data: [12, 55, 12, 31],
+                    label: "Valor",
+                    data: chartInfo,
                     borderColor: 'rgb(55,162,200)',
                     backgroundColor: 'rgba(53,162,235,0.4)'
                 },
@@ -33,9 +60,8 @@ const BarChart: React.FunctionComponent = () => {
                 }
             }
         })
-    }, [])
+    }, [chartInfo])
     return (
-
         <Bar options={chartOptions} data={chartData} ></Bar>
     );
 }

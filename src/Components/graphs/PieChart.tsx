@@ -1,8 +1,9 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Pie } from 'react-chartjs-2'
 import { Chart, registerables } from 'chart.js';
+import { PieChartProp } from '../models';
 
-const PieChart: React.FunctionComponent = () => {
+const PieChart: React.FunctionComponent<PieChartProp> = ({ data }) => {
     Chart.register(...registerables);
     // ChartsJs.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
     const [chartData, setChartData]: any = useState({ datasets: [], })
@@ -11,7 +12,7 @@ const PieChart: React.FunctionComponent = () => {
 
     useEffect(() => {
         setChartData({
-            labels: ["Equipes"],
+            labels: [data],
             datasets: [
                 {
                     label: "Equipes Registradas",

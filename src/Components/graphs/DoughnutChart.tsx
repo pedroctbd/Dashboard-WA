@@ -1,17 +1,17 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Doughnut } from 'react-chartjs-2'
 import { Chart, registerables } from 'chart.js';
+import { DoughnutChartProp } from '../models';
 
-const DoughnutChart: React.FunctionComponent = () => {
+const DoughnutChart: React.FunctionComponent<DoughnutChartProp> = ({ data }) => {
     Chart.register(...registerables);
     // ChartsJs.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
     const [chartData, setChartData]: any = useState({ datasets: [], })
 
     const [chartOptions, setChartOptions] = useState({});
-
     useEffect(() => {
         setChartData({
-            labels: ["Valor"],
+            labels: [data],
             datasets: [
                 {
                     label: "Valor Gerado em R$",

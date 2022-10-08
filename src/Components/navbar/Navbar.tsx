@@ -1,6 +1,4 @@
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
@@ -8,9 +6,8 @@ import Menu from '@mui/material/Menu';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
-import Logo from './logo.svg';
-import { ActionContainer, AvatarWrapper, Image, LogoWrapper, Text } from './styles';
+import { ActionContainer, AvatarWrapper, Image, LogoWrapper } from './styles';
+import logo from '../../public/logo/logo.svg';
 const settings = ['Profile', 'Account', 'Logout'];
 
 const Navbar: React.FunctionComponent = () => {
@@ -28,7 +25,7 @@ const Navbar: React.FunctionComponent = () => {
         <Toolbar disableGutters>
             <ActionContainer>
                 <LogoWrapper>
-                    <Image src={Logo} alt="Wa Logo" />
+                    <Image src={logo} alt="Wa Logo" />
                 </LogoWrapper>
 
                 <AvatarWrapper>

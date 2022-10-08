@@ -4,9 +4,6 @@ import { devices } from '../../styles';
 
 export const TableHeader = styled.div`
     display: flex;
-    align-items: center;
-    justify-content: space-between;
- 
     @media ${devices.tablet} {
         flex-direction: column;
         align-items: flex-start;
@@ -19,6 +16,11 @@ export const TableHeader = styled.div`
         align-items: flex-start;
         justify-content: center;
         align-content: center;
+    }
+    @media ${devices.laptop} {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
     }
 `;
 
